@@ -4,15 +4,16 @@ import { Logo } from "./logo";
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
 import { MobileNav } from "./mobile-nav";
+import { Link } from "react-router-dom";
 
 export const navLinks = [
   {
     label: "Features",
-    href: "#",
+    href: "/",
   },
   {
     label: "Pricing",
-    href: "#",
+    href: "/pricing",
   },
   {
     label: "About",
@@ -30,7 +31,7 @@ export function Header() {
         {
           "border-border bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/50 md:top-2 md:max-w-3xl md:shadow":
             scrolled,
-        }
+        },
       )}
     >
       <nav
@@ -38,21 +39,21 @@ export function Header() {
           "flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out",
           {
             "md:px-2": scrolled,
-          }
+          },
         )}
       >
-        <a className="rounded-md p-2 hover:bg-accent" href="#">
+        <Link className="rounded-md p-2 hover:bg-accent" to="/">
           <Logo className="h-7" />
-        </a>
+        </Link>
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link, i) => (
-            <a
+            <Link
               className={buttonVariants({ variant: "ghost" })}
-              href={link.href}
+              to={link.href}
               key={i}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Button variant="outline">Sign In</Button>
           <Button>Get Started</Button>

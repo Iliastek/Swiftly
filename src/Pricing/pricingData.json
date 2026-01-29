@@ -1,0 +1,284 @@
+{
+  "plans": [
+    {
+      "id": "basic",
+      "name": "Basic plan",
+      "description": "Best for small teams and freelancers.",
+      "monthlyPrice": 10,
+      "annualPrice": 96
+    },
+    {
+      "id": "business",
+      "name": "Business plan",
+      "description": "Best for growing teams.",
+      "monthlyPrice": 20,
+      "annualPrice": 192
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise plan",
+      "description": "Best for large organizations.",
+      "monthlyPrice": 40,
+      "annualPrice": 384
+    }
+  ],
+  "features": [
+    {
+      "items": [
+        {
+          "name": "Support agents",
+          "basic": 3,
+          "business": 10,
+          "enterprise": "Unlimited"
+        },
+        {
+          "name": "Monthly tickets",
+          "basic": "500",
+          "business": "5,000",
+          "enterprise": "Unlimited"
+        },
+        {
+          "name": "Email support",
+          "basic": true,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Live chat widget",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Knowledge base",
+          "basic": true,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Mobile apps (iOS & Android)",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        }
+      ]
+    },
+    {
+      "category": "Ticket management",
+      "items": [
+        {
+          "name": "Ticket prioritization",
+          "basic": true,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Custom ticket fields",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Ticket tags & labels",
+          "basic": true,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Automatic ticket assignment",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "SLA management",
+          "basic": false,
+          "business": false,
+          "enterprise": true
+        },
+        {
+          "name": "Ticket templates",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Collision detection",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        }
+      ]
+    },
+    {
+      "category": "Automation & workflows",
+      "items": [
+        {
+          "name": "Automated responses",
+          "basic": "Basic",
+          "business": "Advanced",
+          "enterprise": "Advanced"
+        },
+        {
+          "name": "Custom workflows",
+          "basic": false,
+          "business": 10,
+          "enterprise": "Unlimited"
+        },
+        {
+          "name": "Time-based triggers",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Conditional logic",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Macro actions",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        }
+      ]
+    },
+    {
+      "category": "Reporting & analytics",
+      "items": [
+        {
+          "name": "Basic reports",
+          "basic": true,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Advanced analytics",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Custom dashboards",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Export reports (CSV, PDF)",
+          "basic": true,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Scheduled reports",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Customer satisfaction surveys",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Performance metrics",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        }
+      ]
+    },
+    {
+      "category": "Integrations & API",
+      "items": [
+        {
+          "name": "Email integration",
+          "basic": true,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Slack integration",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "API access",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Webhooks",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Third-party integrations",
+          "basic": "5",
+          "business": "50+",
+          "enterprise": "200+"
+        },
+        {
+          "name": "Custom integrations",
+          "basic": false,
+          "business": false,
+          "enterprise": true
+        }
+      ]
+    },
+    {
+      "category": "Security & compliance",
+      "items": [
+        {
+          "name": "SSL encryption",
+          "basic": true,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Two-factor authentication",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "SSO/SAML authentication",
+          "basic": false,
+          "business": false,
+          "enterprise": true
+        },
+        {
+          "name": "Role-based permissions",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        },
+        {
+          "name": "Audit logs",
+          "basic": false,
+          "business": false,
+          "enterprise": true
+        },
+        {
+          "name": "IP restrictions",
+          "basic": false,
+          "business": false,
+          "enterprise": true
+        },
+        {
+          "name": "GDPR compliance tools",
+          "basic": false,
+          "business": true,
+          "enterprise": true
+        }
+      ]
+    }
+  ]
+}
