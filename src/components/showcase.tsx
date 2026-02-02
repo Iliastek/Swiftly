@@ -166,7 +166,7 @@ export function Showcase() {
                             : "text-orange-500"
                         }`}
                       />
-                      <span className="text-sm font-medium">
+                      <span className="text-sm font-medidum">
                         Ticket {item.id}
                       </span>
                     </div>

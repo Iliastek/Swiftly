@@ -1,7 +1,14 @@
+import { Navigate, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
+import Pricing from "@/Pricing/Pricing";
 
 export function CallToAction() {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/pricing");
+  };
   return (
     <div className="relative mx-auto flex w-full max-w-4xl flex-col justify-between border-x">
       <div className="-translate-x-1/2 -top-px pointer-events-none absolute left-1/2 w-screen border-t" />
@@ -15,7 +22,7 @@ export function CallToAction() {
       </div>
       <div className="flex items-center justify-center gap-2 bg-secondary/80 p-4 dark:bg-secondary/40">
         <Button variant="outline">Contact Sales</Button>
-        <Button>
+        <Button onClick={handleButtonClick}>
           Get Started <ArrowRightIcon />
         </Button>
       </div>

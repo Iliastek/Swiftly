@@ -1,0 +1,67 @@
+{
+  "stats": [
+    {
+      "iconName": "Calendar",
+      "label": "Founded",
+      "value": "2024",
+      "color": "text-purple-500"
+    },
+    {
+      "iconName": "Ticket",
+      "label": "Tickets Resolved",
+      "value": "2.5M+",
+      "color": "text-orange-500"
+    },
+    {
+      "iconName": "Clock",
+      "label": "Hours Saved",
+      "value": "120,000+",
+      "color": "text-green-500"
+    },
+    {
+      "iconName": "Smile",
+      "label": "Support Burnout",
+      "value": "0%",
+      "color": "text-pink-500"
+    }
+  ],
+  "values": [
+    {
+      "iconName": "Heart",
+      "title": "Human-Centric AI",
+      "description": "We believe AI should empower agents, not eliminate them. Swiftly handles the queue, so your team can handle the customer.",
+      "color": "text-pink-500",
+      "bgColor": "bg-pink-500/10"
+    },
+    {
+      "iconName": "Zap",
+      "title": "Speed is Respect",
+      "description": "Making a customer wait 24 hours for a simple answer is disrespectful. We believe instant resolution is the highest form of customer service.",
+      "color": "text-yellow-500",
+      "bgColor": "bg-yellow-500/10"
+    },
+    {
+      "iconName": "Shield",
+      "title": "Trust by Default",
+      "description": "We handle sensitive data. We don't take shortcuts. GDPR compliance and enterprise-grade security are the foundation of our code, not an afterthought.",
+      "color": "text-green-500",
+      "bgColor": "bg-green-500/10"
+    }
+  ],
+  "founders": [
+    {
+      "name": "Ilias Teknis",
+      "role": "Co-Founder & CEO",
+      "bio": "Former Head of Customer Success. Obsessed with building support teams that don't burn out. Believes that the future of service is 50% Tech, 50% Empathy.",
+      "initial": "I",
+      "gradient": "from-purple-500 to-pink-500"
+    },
+    {
+      "name": "Ilias Almerekov",
+      "role": "Co-Founder & CTO",
+      "bio": "AI Engineer with a background in NLP (Natural Language Processing). Previously built automation engines for fintech. Ensuring Swiftly isn't just fast, but safe and precise.",
+      "initial": "I",
+      "gradient": "from-orange-500 to-yellow-500"
+    }
+  ]
+}

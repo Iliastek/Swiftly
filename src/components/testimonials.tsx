@@ -14,7 +14,7 @@ const testimonials = [
       "Before Swiftly, we were drowning in tickets every Monday morning. Now, 70% are solved before we even log in. It feels like we hired 5 senior agents overnight, but for a fraction of the cost.",
     author: "Sarah Jenkins",
     role: "Head of Customer Support",
-    company: "Retailify",
+    company: "",
   },
   {
     quote:

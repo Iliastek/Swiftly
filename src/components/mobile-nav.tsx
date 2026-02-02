@@ -5,10 +5,13 @@ import { MenuIcon, XIcon } from "lucide-react";
 import React from "react";
 import { createPortal } from "react-dom";
 import { navLinks } from "./header";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
   const { isMobile } = useMediaQuery();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // 🚫 Disable body scroll when open
   React.useEffect(() => {
@@ -22,6 +25,37 @@ export function MobileNav() {
       document.body.style.overflow = "";
     };
   }, [open, isMobile]);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    // Check if it's an anchor link (starts with /#)
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+
+      // Close the menu first
+      setOpen(false);
+
+      // If we're not on the home page, navigate there first
+      if (location.pathname !== "/") {
+        navigate("/");
+        // Wait for navigation, then scroll
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        }, 50);
+      }
+    } else {
+      // For regular links, just close the menu
+      setOpen(false);
+    }
+  };
 
   return (
     <>
@@ -45,14 +79,14 @@ export function MobileNav() {
           <div
             className={cn(
               "bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/50",
-              "fixed top-14 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-t md:hidden"
+              "fixed top-14 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-t md:hidden",
             )}
             id="mobile-menu"
           >
             <div
               className={cn(
                 "data-[slot=open]:zoom-in-97 ease-out data-[slot=open]:animate-in",
-                "size-full p-4"
+                "size-full p-4",
               )}
               data-slot={open ? "open" : "closed"}
             >
@@ -65,6 +99,7 @@ export function MobileNav() {
                     })}
                     href={link.href}
                     key={link.label}
+                    onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
                   </a>
@@ -78,7 +113,7 @@ export function MobileNav() {
               </div>
             </div>
           </div>,
-          document.body
+          document.body,
         )}
     </>
   );

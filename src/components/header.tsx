@@ -4,12 +4,12 @@ import { Logo } from "./logo";
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
 import { MobileNav } from "./mobile-nav";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export const navLinks = [
   {
     label: "Features",
-    href: "/",
+    href: "/#features",
   },
   {
     label: "Pricing",
@@ -17,12 +17,41 @@ export const navLinks = [
   },
   {
     label: "About",
-    href: "#",
+    href: "/about",
   },
 ];
 
 export function Header() {
   const scrolled = useScroll(10);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleButtonNavClick = (path: string) => {
+    navigate(path);
+  };
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    // Check if it's an anchor link (starts with /#)
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+
+      // If we're not on the home page, navigate there first
+      if (location.pathname !== "/") {
+        navigate("/");
+        // Wait for navigation, then scroll
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <header
@@ -51,11 +80,17 @@ export function Header() {
               className={buttonVariants({ variant: "ghost" })}
               to={link.href}
               key={i}
+              onClick={(e) => handleNavClick(e, link.href)}
             >
               {link.label}
             </Link>
           ))}
-          <Button variant="outline">Sign In</Button>
+          <Button
+            onClick={() => handleButtonNavClick("/login")}
+            variant="outline"
+          >
+            Sign In
+          </Button>
           <Button>Get Started</Button>
         </div>
         <MobileNav />

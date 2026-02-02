@@ -29,9 +29,9 @@ function App() {
         <ProblemSolution />
         <Features />
         <Showcase />
+        <GlobalReach />
         <Testimonials />
       </main>
-      <GlobalReach />
       <CallToAction />
       <Footer />
     </div>
