@@ -71,7 +71,7 @@ export function Header() {
           },
         )}
       >
-        <Link className="rounded-md p-2 hover:bg-accent" to="/">
+        <Link className="rounded-md p-2" to="/">
           <Logo className="h-7" />
         </Link>
         <div className="hidden items-center gap-1 md:flex">
@@ -91,7 +91,9 @@ export function Header() {
           >
             Sign In
           </Button>
-          <Button>Get Started</Button>
+          <Button onClick={() => handleButtonNavClick("/register")}>
+            Get Started
+          </Button>
         </div>
         <MobileNav />
       </nav>

@@ -5,6 +5,7 @@ import App from "./App";
 import Pricing from "./Pricing/Pricing";
 import About from "./About/About";
 import Login from "./Login/Login";
+import Register from "./Register/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -18,6 +19,7 @@ root.render(
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

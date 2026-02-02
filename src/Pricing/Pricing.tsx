@@ -4,6 +4,7 @@ import { Footer } from "../components/footer";
 import { Button } from "../components/ui/button";
 import { Check, HelpCircle, X } from "lucide-react";
 import { cn } from "../lib/utils";
+import { useNavigate } from "react-router-dom";
 import pricingData from "./pricingData.json";
 
 type Plan = "basic" | "business" | "enterprise";
@@ -34,6 +35,12 @@ const features: FeatureSection[] = pricingData.features as FeatureSection[];
 
 function Pricing() {
   const [isAnnual, setIsAnnual] = useState(true);
+  const navigate = useNavigate();
+
+  const handleGetStarted = (planId: string) => {
+    const billingCycle = isAnnual ? "annual" : "monthly";
+    navigate(`/register?plan=${planId}&billing=${billingCycle}`);
+  };
 
   const renderFeatureValue = (value: boolean | string | number) => {
     if (typeof value === "boolean") {
@@ -117,6 +124,7 @@ function Pricing() {
                   </div>
                 </div>
                 <Button
+                  onClick={() => handleGetStarted(plan.id)}
                   className={cn(
                     "w-full rounded-lg py-5 font-medium",
                     plan.id === "basic"
