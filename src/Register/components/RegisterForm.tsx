@@ -63,7 +63,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
   return (
     <div
       className={cn(
-        "w-full max-w-md transition-all duration-500",
+        "w-full max-w-xl transition-all duration-500",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
       )}
     >

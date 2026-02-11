@@ -36,7 +36,7 @@ const Register: React.FC = () => {
           <div
             className={cn(
               "w-full flex gap-6 justify-center",
-              selectedPlan ? "max-w-6xl" : "max-w-lg mx-auto",
+              selectedPlan ? "max-w-6xl" : "max-w-xl mx-auto",
             )}
           >
             {/* Desktop Plan Card */}
