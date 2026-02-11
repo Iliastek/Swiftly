@@ -10,6 +10,8 @@ interface LoginFormProps {
   setPassword: (password: string) => void;
   setRememberMe: (rememberMe: boolean) => void;
   toggleShowPassword: () => void;
+  isLoading: boolean;
+  error: string | null;
   handleSubmit: (e: React.FormEvent) => void;
 }
 
@@ -19,10 +21,17 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   setPassword,
   setRememberMe,
   toggleShowPassword,
+  isLoading,
+  error,
   handleSubmit,
 }) => {
   return (
     <>
+      {error && (
+        <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 text-sm">
+          {error}
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Email */}
         <div className="space-y-2">
@@ -89,8 +98,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         </div>
 
         {/* Submit Button */}
-        <Button type="submit" className="w-full h-11">
-          Sign in
+        <Button type="submit" className="w-full h-11" disabled={isLoading}>
+          {isLoading ? "Signing in..." : "Sign in"}
         </Button>
       </form>
 

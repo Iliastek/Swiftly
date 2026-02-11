@@ -10,6 +10,8 @@ const Login = () => {
     setRememberMe,
     toggleShowPassword,
     isVisible,
+    isLoading,
+    error,
     handleSubmit,
   } = useLoginForm();
 
@@ -23,6 +25,8 @@ const Login = () => {
           setRememberMe={setRememberMe}
           toggleShowPassword={toggleShowPassword}
           isVisible={isVisible}
+          isLoading={isLoading}
+          error={error}
           handleSubmit={handleSubmit}
         />
       </div>

@@ -14,6 +14,8 @@ interface LoginCardProps {
   setRememberMe: (rememberMe: boolean) => void;
   toggleShowPassword: () => void;
   isVisible: boolean;
+  isLoading: boolean;
+  error: string | null;
   handleSubmit: (e: React.FormEvent) => void;
 }
 
@@ -24,6 +26,8 @@ export const LoginCard: React.FC<LoginCardProps> = ({
   setRememberMe,
   toggleShowPassword,
   isVisible,
+  isLoading,
+  error,
   handleSubmit,
 }) => {
   return (
@@ -62,6 +66,8 @@ export const LoginCard: React.FC<LoginCardProps> = ({
           setPassword={setPassword}
           setRememberMe={setRememberMe}
           toggleShowPassword={toggleShowPassword}
+          isLoading={isLoading}
+          error={error}
           handleSubmit={handleSubmit}
         />
       </div>

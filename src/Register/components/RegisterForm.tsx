@@ -35,6 +35,10 @@ interface RegisterFormProps {
   // Animation
   isVisible: boolean;
 
+  // Loading / Error
+  isLoading: boolean;
+  error: string | null;
+
   // Actions
   onSubmit: (e: React.FormEvent) => void;
 }
@@ -58,6 +62,8 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
   price,
   billingCycle,
   isVisible,
+  isLoading,
+  error,
   onSubmit,
 }) => {
   return (
@@ -105,6 +111,11 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         </div>
 
         {/* Form */}
+        {error && (
+          <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 text-sm">
+            {error}
+          </div>
+        )}
         <form onSubmit={onSubmit} className="space-y-5">
           <FormInput
             label="Full name"
@@ -188,15 +199,18 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
           {/* Submit Button */}
           <Button
             type="submit"
+            disabled={isLoading}
             className={cn(
               "w-full h-11",
               selectedPlan &&
                 `bg-gradient-to-r ${selectedPlan.gradient} hover:opacity-90`,
             )}
           >
-            {selectedPlan
-              ? `Start with ${selectedPlan.name}`
-              : "Create account"}
+            {isLoading
+              ? "Creating account..."
+              : selectedPlan
+                ? `Start with ${selectedPlan.name}`
+                : "Create account"}
           </Button>
         </form>
 

@@ -6,11 +6,27 @@ import {
   BillingToggle,
   PricingCard,
   FeatureComparisonTable,
+  ConfirmationModal,
 } from "./components";
 
 function Pricing() {
-  const { isAnnual, toggleBilling, handleGetStarted, plans, features } =
-    usePricing();
+  const {
+    isAnnual,
+    toggleBilling,
+    handleGetStarted,
+    confirmUpgrade,
+    cancelConfirmation,
+    confirmingPlan,
+    plans,
+    features,
+  } = usePricing();
+
+  const selectedPlan = plans.find((p) => p.id === confirmingPlan);
+  const selectedPrice = selectedPlan
+    ? isAnnual
+      ? selectedPlan.annualPrice / 12
+      : selectedPlan.monthlyPrice
+    : 0;
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -46,6 +62,18 @@ function Pricing() {
           <FeatureComparisonTable features={features} />
         </div>
       </main>
+
+      {/* Confirmation Modal */}
+      {confirmingPlan && selectedPlan && (
+        <ConfirmationModal
+          planName={selectedPlan.name}
+          price={selectedPrice}
+          billingCycle={isAnnual ? "annual" : "monthly"}
+          onConfirm={confirmUpgrade}
+          onCancel={cancelConfirmation}
+        />
+      )}
+
       <Footer />
     </div>
   );

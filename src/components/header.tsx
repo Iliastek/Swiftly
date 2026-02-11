@@ -5,6 +5,8 @@ import { Button, buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
 import { MobileNav } from "./mobile-nav";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { supabase } from "../supabaseClient";
 
 export const navLinks = [
   {
@@ -25,6 +27,42 @@ export function Header() {
   const scrolled = useScroll(10);
   const navigate = useNavigate();
   const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+    // Initialize from localStorage to prevent flash
+    const cached = localStorage.getItem("isLoggedIn");
+    return cached === "true";
+  });
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const loggedIn = !!user;
+      setIsLoggedIn(loggedIn);
+      if (loggedIn) {
+        localStorage.setItem("isLoggedIn", "true");
+      } else {
+        localStorage.removeItem("isLoggedIn");
+      }
+    };
+    checkAuth();
+
+    // Listen for auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      const loggedIn = !!session;
+      setIsLoggedIn(loggedIn);
+      if (loggedIn) {
+        localStorage.setItem("isLoggedIn", "true");
+      } else {
+        localStorage.removeItem("isLoggedIn");
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const handleButtonNavClick = (path: string) => {
     navigate(path);
@@ -85,15 +123,23 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Button
-            onClick={() => handleButtonNavClick("/login")}
-            variant="outline"
-          >
-            Sign In
-          </Button>
-          <Button onClick={() => handleButtonNavClick("/register")}>
-            Get Started
-          </Button>
+          {isLoggedIn ? (
+            <Button onClick={() => handleButtonNavClick("/dashboard")}>
+              Dashboard
+            </Button>
+          ) : (
+            <>
+              <Button
+                onClick={() => handleButtonNavClick("/login")}
+                variant="outline"
+              >
+                Sign In
+              </Button>
+              <Button onClick={() => handleButtonNavClick("/register")}>
+                Get Started
+              </Button>
+            </>
+          )}
         </div>
         <MobileNav />
       </nav>

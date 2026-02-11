@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
 import { planDetails, PlanInfo, calculatePrice } from "../data/planDetails";
 
 export interface RegisterFormState {
@@ -31,12 +32,17 @@ export interface UseRegisterFormReturn {
   // Animation state
   isVisible: boolean;
 
+  // Loading / Error
+  isLoading: boolean;
+  error: string | null;
+
   // Actions
   handleSubmit: (e: React.FormEvent) => void;
 }
 
 export const useRegisterForm = (): UseRegisterFormReturn => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   // Form state
   const [fullName, setFullName] = useState("");
@@ -46,6 +52,10 @@ export const useRegisterForm = (): UseRegisterFormReturn => {
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Loading / Error
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Animation state
   const [isVisible, setIsVisible] = useState(false);
@@ -61,17 +71,56 @@ export const useRegisterForm = (): UseRegisterFormReturn => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({
-      fullName,
+    setError(null);
+
+    // Validation
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
+
+    setIsLoading(true);
+
+    // 1. Sign up with Supabase Auth (trigger creates user in public.users)
+    const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
-      confirmPassword,
-      agreeToTerms,
-      selectedPlan: selectedPlanId,
-      billingCycle,
+      options: {
+        data: {
+          full_name: fullName,
+        },
+      },
     });
+
+    if (signUpError) {
+      setError(signUpError.message);
+      setIsLoading(false);
+      return;
+    }
+
+    // 2. If a plan was selected, create a subscription
+    if (selectedPlanId && data.user) {
+      const { error: subError } = await supabase.from("subscriptions").insert({
+        user_id: data.user.id,
+        plan_id: selectedPlanId,
+        billing_cycle: billingCycle,
+        price: price,
+      });
+
+      if (subError) {
+        console.error("Subscription error:", subError.message);
+      }
+    }
+
+    setIsLoading(false);
+    navigate("/login");
   };
 
   return {
@@ -95,6 +144,8 @@ export const useRegisterForm = (): UseRegisterFormReturn => {
     billingCycle,
     price,
     isVisible,
+    isLoading,
+    error,
     handleSubmit,
   };
 };

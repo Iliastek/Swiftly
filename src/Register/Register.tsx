@@ -19,6 +19,8 @@ const Register: React.FC = () => {
     billingCycle,
     price,
     isVisible,
+    isLoading,
+    error,
     handleSubmit,
   } = useRegisterForm();
 
@@ -69,6 +71,8 @@ const Register: React.FC = () => {
               price={price}
               billingCycle={billingCycle}
               isVisible={isVisible}
+              isLoading={isLoading}
+              error={error}
               onSubmit={handleSubmit}
             />
           </div>

@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
 import type { LoginFormState } from "../types";
 
 export const useLoginForm = () => {
+  const navigate = useNavigate();
+
   const [formState, setFormState] = useState<LoginFormState>({
     email: "",
     password: "",
@@ -9,6 +13,8 @@ export const useLoginForm = () => {
     showPassword: false,
   });
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
@@ -17,10 +23,12 @@ export const useLoginForm = () => {
 
   const setEmail = (email: string) => {
     setFormState((prev) => ({ ...prev, email }));
+    setError(null);
   };
 
   const setPassword = (password: string) => {
     setFormState((prev) => ({ ...prev, password }));
+    setError(null);
   };
 
   const setRememberMe = (rememberMe: boolean) => {
@@ -31,14 +39,24 @@ export const useLoginForm = () => {
     setFormState((prev) => ({ ...prev, showPassword: !prev.showPassword }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log({
+    setIsLoading(true);
+    setError(null);
+
+    const { error } = await supabase.auth.signInWithPassword({
       email: formState.email,
       password: formState.password,
-      rememberMe: formState.rememberMe,
     });
+
+    if (error) {
+      setError(error.message);
+      setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(false);
+    navigate("/dashboard");
   };
 
   return {
@@ -48,6 +66,8 @@ export const useLoginForm = () => {
     setRememberMe,
     toggleShowPassword,
     isVisible,
+    isLoading,
+    error,
     handleSubmit,
   };
 };
