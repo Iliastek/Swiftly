@@ -10,7 +10,7 @@ export function CallToAction() {
     navigate("/pricing");
   };
   return (
-    <div className="relative mx-auto flex w-full max-w-4xl flex-col justify-between border-x">
+    <div className="relative mx-auto flex w-full max-w-[1400px] flex-col justify-between border-x">
       <div className="-translate-x-1/2 -top-px pointer-events-none absolute left-1/2 w-screen border-t" />
       <div className="border-b px-2 py-8">
         <h2 className="text-center font-semibold text-lg md:text-2xl">

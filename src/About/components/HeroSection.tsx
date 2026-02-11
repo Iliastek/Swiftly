@@ -3,7 +3,7 @@ import React from "react";
 export const HeroSection: React.FC = () => {
   return (
     <section className="py-28 px-4 bg-white">
-      <div className="mx-auto max-w-4xl text-center">
+      <div className="mx-auto max-w-[1400px] text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
           We didn't build Swiftly to replace humans.
           <br />

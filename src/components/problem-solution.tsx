@@ -4,8 +4,8 @@ import { AlertCircle, ArrowRight, Sparkles } from "lucide-react";
 export function ProblemSolution() {
   return (
     <section className="py-12 px-4">
-      <div className="mx-auto max-w-4xl w-full">
-        <div className="relative grid md:grid-cols-2 gap-4 md:gap-6">
+      <div className="mx-auto max-w-[1400px] w-full">
+        <div className="relative grid md:grid-cols-2 md:items-center gap-4 md:gap-6">
           {/* Problem Side - Chaotic, Overwhelmed */}
           <div className="relative group">
             <div className="relative rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-950/20 via-background to-background p-8 md:p-10 shadow-2xl">
@@ -65,7 +65,7 @@ export function ProblemSolution() {
 
           {/* Solution Side - Clean, Organized */}
           <div className="relative order-3 md:order-none">
-            <div className="rounded-2xl border border-green-500/20 bg-gradient-to-br from-green-950/20 via-background to-background p-8 md:p-10 shadow-2xl">
+            <div className="rounded-2xl border border-green-500/20 bg-gradient-to-br from-green-950/20 via-background to-background p-8 md:py-16 md:px-10 shadow-2xl">
               {/* Calm gradient overlay */}
               <div className="absolute inset-0 rounded-2xl opacity-[0.03] bg-[radial-gradient(circle_at_30%_30%,_rgba(34,197,94,0.3),transparent_70%)]" />
 

@@ -16,7 +16,7 @@ function Pricing() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header />
       <main className="flex-1 py-16 px-4">
-        <div className="mx-auto max-w-4xl w-full">
+        <div className="mx-auto max-w-[1400px] w-full">
           {/* Header */}
           <div className="mb-12 text-center">
             <h1 className="mb-3 font-bold text-4xl text-gray-900">

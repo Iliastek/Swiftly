@@ -51,7 +51,7 @@ export function Testimonials() {
         }}
       />
 
-      <div className="mx-auto max-w-5xl w-full relative">
+      <div className="mx-auto max-w-[1400px] w-full relative">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">

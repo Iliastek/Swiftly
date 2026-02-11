@@ -8,7 +8,7 @@ interface TeamSectionProps {
 export const TeamSection: React.FC<TeamSectionProps> = ({ founders }) => {
   return (
     <section className="py-24 px-4 bg-white">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-[1400px]">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
             The Brains Behind Swiftly
@@ -18,7 +18,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ founders }) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {founders.map((founder) => (
             <div
               key={founder.name}

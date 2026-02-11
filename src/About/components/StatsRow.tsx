@@ -8,7 +8,7 @@ interface StatsRowProps {
 export const StatsRow: React.FC<StatsRowProps> = ({ stats }) => {
   return (
     <section className="py-16 px-4 bg-slate-50 border-y border-slate-200">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
           {stats.map((stat) => {
             const isTickets = stat.label === "Tickets Resolved";

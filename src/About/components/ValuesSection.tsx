@@ -8,7 +8,7 @@ interface ValuesSectionProps {
 export const ValuesSection: React.FC<ValuesSectionProps> = ({ values }) => {
   return (
     <section className="py-24 px-4 bg-slate-50">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-[1400px]">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
             What We Stand For

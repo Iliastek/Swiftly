@@ -15,8 +15,8 @@ function App() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <Hero />
-      <main className="flex-1 mx-auto max-w-4xl w-full py-8 px-4">
-        <section className="relative mx-auto max-w-3xl mb-12">
+      <main className="flex-1 mx-auto max-w-[1400px] w-full py-8 px-6">
+        <section className="relative mx-auto max-w-7xl mb-12">
           <h2 className="mb-5 text-center font-medium text-foreground text-xl tracking-tight md:text-3xl">
             <span className="text-muted-foreground">Trusted by experts.</span>
             <br />

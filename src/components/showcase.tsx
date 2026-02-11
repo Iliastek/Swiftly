@@ -35,7 +35,7 @@ const liveFeedItems = [
 export function Showcase() {
   return (
     <section className="py-20 px-4">
-      <div className="mx-auto max-w-5xl w-full">
+      <div className="mx-auto max-w-[1400px] w-full">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">

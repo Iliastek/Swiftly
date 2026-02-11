@@ -57,7 +57,7 @@ export function GlobalReach() {
     <section className="py-12 sm:py-16 md:py-20 px-4 relative overflow-hidden">
       {/* Grid Background - like Hero */}
 
-      <div className="mx-auto max-w-5xl w-full relative">
+      <div className="mx-auto max-w-[1400px] w-full relative">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 backdrop-blur-sm px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-medium shadow-sm mb-4 sm:mb-6">

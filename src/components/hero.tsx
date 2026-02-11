@@ -24,7 +24,7 @@ export function Hero() {
       {/* Fade overlay at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent -z-5" />
 
-      <div className="mx-auto max-w-4xl px-4 py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
           <a

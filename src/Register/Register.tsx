@@ -25,7 +25,7 @@ const Register: React.FC = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <div className="flex-1 flex items-center justify-center p-4 py-8">
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-6xl">
           {/* Logo centered above everything */}
           <div className="flex justify-center mb-8">
             <Link to="/" className="hover:opacity-80 transition-opacity">
@@ -36,7 +36,7 @@ const Register: React.FC = () => {
           <div
             className={cn(
               "w-full flex gap-6 justify-center",
-              selectedPlan ? "max-w-4xl" : "max-w-md mx-auto",
+              selectedPlan ? "max-w-6xl" : "max-w-lg mx-auto",
             )}
           >
             {/* Desktop Plan Card */}

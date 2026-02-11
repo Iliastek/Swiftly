@@ -3,7 +3,7 @@ import React from "react";
 export const StorySection: React.FC = () => {
   return (
     <section className="py-24 px-4 bg-white">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-[1400px]">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 text-slate-700 text-sm font-medium mb-4">
             Our Story
@@ -70,7 +70,7 @@ export const StorySection: React.FC = () => {
         </div>
 
         {/* Abschlusstext */}
-        <div className="max-w-3xl mx-auto mt-12">
+        <div className="max-w-5xl mx-auto mt-12">
           <p className="text-slate-600 text-lg leading-relaxed text-center">
             We realized that Customer Support is broken. We treat humans like
             machines, and then wonder why the service is bad. We built Swiftly

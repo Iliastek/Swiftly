@@ -27,7 +27,7 @@ export const LoginCard: React.FC<LoginCardProps> = ({
   handleSubmit,
 }) => {
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-xl">
       {/* Logo above card */}
       <div className="flex justify-center mb-8">
         <Link to="/" className="hover:opacity-80 transition-opacity">
