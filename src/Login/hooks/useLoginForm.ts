@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
 import type { LoginFormState } from "../types";
 
-export const useLoginForm = () => {
+export const useLoginForm = (
+  selectedPlan?: string | null,
+  selectedBilling?: string,
+) => {
   const navigate = useNavigate();
 
   const [formState, setFormState] = useState<LoginFormState>({
@@ -44,7 +47,7 @@ export const useLoginForm = () => {
     setIsLoading(true);
     setError(null);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: formState.email,
       password: formState.password,
     });
@@ -55,8 +58,32 @@ export const useLoginForm = () => {
       return;
     }
 
+    // Ensure user exists in public.users table
+    if (data.user) {
+      const { data: existingUser } = await supabase
+        .from("users")
+        .select("id")
+        .eq("id", data.user.id)
+        .single();
+
+      // If user doesn't exist in public.users, create it
+      if (!existingUser) {
+        await supabase.from("users").insert({
+          id: data.user.id,
+          full_name: data.user.user_metadata?.full_name || "",
+          email: data.user.email || "",
+        });
+      }
+    }
+
     setIsLoading(false);
-    navigate("/dashboard");
+
+    // Redirect to payment if a plan was selected, otherwise to dashboard
+    if (selectedPlan) {
+      navigate(`/payment?plan=${selectedPlan}&billing=${selectedBilling}`);
+    } else {
+      navigate("/dashboard");
+    }
   };
 
   return {

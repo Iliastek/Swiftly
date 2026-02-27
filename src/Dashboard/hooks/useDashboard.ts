@@ -22,6 +22,9 @@ export const useDashboard = () => {
         return;
       }
 
+      // Set email immediately
+      setUserEmail(user.email || "");
+
       const { data: profile } = await supabase
         .from("users")
         .select("full_name, email")
@@ -29,8 +32,19 @@ export const useDashboard = () => {
         .single();
 
       if (profile) {
-        setUserName(profile.full_name);
+        setUserName(profile.full_name || "User");
         setUserEmail(profile.email);
+      } else {
+        // If profile doesn't exist, create it
+        const fullName = user.user_metadata?.full_name || "";
+
+        await supabase.from("users").insert({
+          id: user.id,
+          full_name: fullName,
+          email: user.email || "",
+        });
+
+        setUserName(fullName || "User");
       }
 
       const { data: sub } = await supabase

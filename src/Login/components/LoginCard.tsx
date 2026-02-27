@@ -5,7 +5,9 @@ import { cn } from "../../lib/utils";
 import { OAuthButtons } from "./OAuthButtons";
 import { Divider } from "./Divider";
 import { LoginForm } from "./LoginForm";
+import { PlanBadge } from "./PlanBadge";
 import type { LoginFormState } from "../types";
+import type { PlanInfo } from "../../Register/data/planDetails";
 
 interface LoginCardProps {
   formState: LoginFormState;
@@ -17,6 +19,10 @@ interface LoginCardProps {
   isLoading: boolean;
   error: string | null;
   handleSubmit: (e: React.FormEvent) => void;
+  planId?: string | null;
+  billingCycle?: string;
+  selectedPlan?: PlanInfo | null;
+  price?: number;
 }
 
 export const LoginCard: React.FC<LoginCardProps> = ({
@@ -29,6 +35,10 @@ export const LoginCard: React.FC<LoginCardProps> = ({
   isLoading,
   error,
   handleSubmit,
+  planId,
+  billingCycle,
+  selectedPlan,
+  price,
 }) => {
   return (
     <div className="w-full max-w-xl">
@@ -49,9 +59,20 @@ export const LoginCard: React.FC<LoginCardProps> = ({
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-foreground mb-2">Sign in</h1>
           <p className="text-muted-foreground">
-            Enter your credentials to access your account
+            {selectedPlan
+              ? "Sign in to continue with your selected plan"
+              : "Enter your credentials to access your account"}
           </p>
         </div>
+
+        {/* Plan Badge */}
+        {selectedPlan && price !== undefined && (
+          <PlanBadge
+            plan={selectedPlan}
+            price={price}
+            billingCycle={billingCycle || "annual"}
+          />
+        )}
 
         {/* OAuth Buttons */}
         <OAuthButtons />
@@ -69,6 +90,8 @@ export const LoginCard: React.FC<LoginCardProps> = ({
           isLoading={isLoading}
           error={error}
           handleSubmit={handleSubmit}
+          planId={planId}
+          billingCycle={billingCycle}
         />
       </div>
     </div>

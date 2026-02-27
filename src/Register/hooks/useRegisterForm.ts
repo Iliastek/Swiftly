@@ -88,39 +88,87 @@ export const useRegisterForm = (): UseRegisterFormReturn => {
 
     setIsLoading(true);
 
-    // 1. Sign up with Supabase Auth (trigger creates user in public.users)
-    const { data, error: signUpError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: fullName,
+    try {
+      // 1. Sign up with Supabase Auth (trigger creates user in public.users)
+      const { data, error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+          },
         },
-      },
-    });
-
-    if (signUpError) {
-      setError(signUpError.message);
-      setIsLoading(false);
-      return;
-    }
-
-    // 2. If a plan was selected, create a subscription
-    if (selectedPlanId && data.user) {
-      const { error: subError } = await supabase.from("subscriptions").insert({
-        user_id: data.user.id,
-        plan_id: selectedPlanId,
-        billing_cycle: billingCycle,
-        price: price,
       });
 
-      if (subError) {
-        console.error("Subscription error:", subError.message);
+      if (signUpError) {
+        setError(signUpError.message);
+        setIsLoading(false);
+        return;
       }
-    }
 
-    setIsLoading(false);
-    navigate("/login");
+      if (!data.user) {
+        setError("Registration failed. Please try again.");
+        setIsLoading(false);
+        return;
+      }
+
+      // 2. Check if email confirmation is required
+      if (data.user && !data.session) {
+        console.log("No session created - attempting auto-login");
+
+        // Try to sign in immediately
+        const { data: signInData, error: signInError } =
+          await supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
+
+        if (signInError) {
+          console.error("Auto-login failed:", signInError);
+          // Email confirmation might be required
+          setError(
+            "Please check your email to confirm your account, then log in.",
+          );
+          setIsLoading(false);
+          navigate("/login");
+          return;
+        }
+
+        console.log("Auto-login successful", signInData);
+      }
+
+      // 3. Ensure user exists in public.users (fallback if trigger fails)
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for trigger
+
+      const { data: existingUser } = await supabase
+        .from("users")
+        .select("id")
+        .eq("id", data.user.id)
+        .single();
+
+      // If user doesn't exist, create manually
+      if (!existingUser) {
+        await supabase.from("users").insert({
+          id: data.user.id,
+          full_name: fullName,
+          email: email,
+        });
+      }
+
+      // 4. If a plan was selected, redirect to payment page
+      if (selectedPlanId) {
+        setIsLoading(false);
+        navigate(`/payment?plan=${selectedPlanId}&billing=${billingCycle}`);
+        return;
+      }
+
+      setIsLoading(false);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Registration error:", error);
+      setError("An unexpected error occurred. Please try again.");
+      setIsLoading(false);
+    }
   };
 
   return {

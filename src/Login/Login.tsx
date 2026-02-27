@@ -1,8 +1,17 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import { useLoginForm } from "./hooks/useLoginForm";
 import { LoginCard } from "./components";
+import { planDetails, calculatePrice } from "../Register/data/planDetails";
 
 const Login = () => {
+  const [searchParams] = useSearchParams();
+  const planId = searchParams.get("plan");
+  const billingCycle = searchParams.get("billing") || "annual";
+
+  const selectedPlan = planId ? planDetails[planId] : null;
+  const price = selectedPlan ? calculatePrice(selectedPlan, billingCycle) : 0;
+
   const {
     formState,
     setEmail,
@@ -13,7 +22,7 @@ const Login = () => {
     isLoading,
     error,
     handleSubmit,
-  } = useLoginForm();
+  } = useLoginForm(planId, billingCycle);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -28,6 +37,10 @@ const Login = () => {
           isLoading={isLoading}
           error={error}
           handleSubmit={handleSubmit}
+          planId={planId}
+          billingCycle={billingCycle}
+          selectedPlan={selectedPlan}
+          price={price}
         />
       </div>
     </div>

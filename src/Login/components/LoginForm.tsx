@@ -13,6 +13,8 @@ interface LoginFormProps {
   isLoading: boolean;
   error: string | null;
   handleSubmit: (e: React.FormEvent) => void;
+  planId?: string | null;
+  billingCycle?: string;
 }
 
 export const LoginForm: React.FC<LoginFormProps> = ({
@@ -24,6 +26,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   isLoading,
   error,
   handleSubmit,
+  planId,
+  billingCycle,
 }) => {
   return (
     <>
@@ -107,7 +111,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       <p className="mt-6 text-center text-sm text-muted-foreground">
         Don't have an account?{" "}
         <Link
-          to="/register"
+          to={
+            planId
+              ? `/register?plan=${planId}&billing=${billingCycle}`
+              : "/register"
+          }
           className="text-foreground font-medium hover:text-primary transition-colors"
         >
           Sign up

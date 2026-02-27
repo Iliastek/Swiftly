@@ -218,7 +218,11 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         <p className="mt-6 text-center text-sm text-muted-foreground">
           Already have an account?{" "}
           <Link
-            to="/login"
+            to={
+              selectedPlan
+                ? `/login?plan=${selectedPlan.id}&billing=${billingCycle}`
+                : "/login"
+            }
             className="text-foreground font-medium hover:text-primary transition-colors"
           >
             Sign in
