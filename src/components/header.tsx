@@ -141,7 +141,7 @@ export function Header() {
             </>
           )}
         </div>
-        <MobileNav />
+        <MobileNav isLoggedIn={isLoggedIn} />
       </nav>
     </header>
   );

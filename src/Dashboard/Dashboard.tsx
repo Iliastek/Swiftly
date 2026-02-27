@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "../components/logo";
 import { useDashboard } from "./hooks/useDashboard";
-import { UserCard, SubscriptionCard } from "./components";
+import { UserCard, SubscriptionCard, UsageMeterCard } from "./components";
 
 const Dashboard: React.FC = () => {
   const {
@@ -13,6 +13,7 @@ const Dashboard: React.FC = () => {
     autoRenewal,
     setAutoRenewal,
     handleLogout,
+    modelUsage,
   } = useDashboard();
 
   if (isLoading) {
@@ -26,38 +27,44 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       {/* Logo */}
-      <div className="w-full max-w-lg flex justify-center mb-6">
+      <div className="w-full max-w-4xl flex justify-center mb-6">
         <Link to="/" className="hover:opacity-80 transition-opacity">
           <Logo className="h-8" />
         </Link>
       </div>
 
-      <div className="w-full max-w-lg space-y-4">
+      <div className="w-full max-w-4xl space-y-4">
         <UserCard
           userName={userName}
           userEmail={userEmail}
           onLogout={handleLogout}
         />
 
-        {subscription ? (
-          <SubscriptionCard
-            subscription={subscription}
-            autoRenewal={autoRenewal}
-            onToggleAutoRenewal={() => setAutoRenewal(!autoRenewal)}
-          />
-        ) : (
-          <div className="rounded-xl border border-border bg-card p-6 shadow-sm text-center">
-            <p className="text-muted-foreground mb-3">
-              You don't have a plan yet.
-            </p>
-            <Link
-              to="/pricing"
-              className="text-primary font-medium hover:underline"
-            >
-              View plans →
-            </Link>
-          </div>
-        )}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {subscription ? (
+            <SubscriptionCard
+              subscription={subscription}
+              autoRenewal={autoRenewal}
+              onToggleAutoRenewal={() => setAutoRenewal(!autoRenewal)}
+            />
+          ) : (
+            <div className="rounded-xl border border-border bg-card p-6 shadow-sm text-center">
+              <p className="text-muted-foreground mb-3">
+                You don't have a plan yet.
+              </p>
+              <Link
+                to="/pricing"
+                className="text-primary font-medium hover:underline"
+              >
+                View plans →
+              </Link>
+            </div>
+          )}
+
+          {modelUsage.length > 0 && (
+            <UsageMeterCard modelUsage={modelUsage.slice(0, 2)} />
+          )}
+        </div>
       </div>
     </div>
   );

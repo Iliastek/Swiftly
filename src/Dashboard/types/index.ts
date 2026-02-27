@@ -5,6 +5,14 @@ export interface Subscription {
   price: number;
 }
 
+export interface AIModelUsage {
+  name: string;
+  percentage: number;
+  used: number;
+  total: number;
+  status?: "normal" | "high" | "critical";
+}
+
 export const planNames: Record<string, string> = {
   basic: "Basic Plan",
   business: "Business Plan",

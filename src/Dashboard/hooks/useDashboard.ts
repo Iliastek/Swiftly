@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
-import type { Subscription } from "../types";
+import type { Subscription, AIModelUsage } from "../types";
 
 export const useDashboard = () => {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ export const useDashboard = () => {
   const [userEmail, setUserEmail] = useState("");
   const [subscription, setSubscription] = useState<Subscription | null>(null);
   const [autoRenewal, setAutoRenewal] = useState(true);
+  const [modelUsage, setModelUsage] = useState<AIModelUsage[]>([]);
 
   useEffect(() => {
     const load = async () => {
@@ -39,6 +40,41 @@ export const useDashboard = () => {
         .single();
 
       if (sub) setSubscription(sub);
+
+      // Mock AI usage data - replace with actual API call
+      // This shows ticket solving statistics across different AI models
+      const usage: AIModelUsage[] = [
+        {
+          name: "Claude Sonnet 4",
+          percentage: 75,
+          used: 75,
+          total: 100,
+          status: "high",
+        },
+        {
+          name: "ChatGPT 5",
+          percentage: 12,
+          used: 12,
+          total: 100,
+          status: "normal",
+        },
+        {
+          name: "Grok 3",
+          percentage: 57,
+          used: 57,
+          total: 100,
+          status: "normal",
+        },
+        {
+          name: "Gemini 2.5",
+          percentage: 95,
+          used: 95,
+          total: 100,
+          status: "critical",
+        },
+      ];
+      setModelUsage(usage);
+
       setIsLoading(false);
     };
     load();
@@ -58,5 +94,6 @@ export const useDashboard = () => {
     autoRenewal,
     setAutoRenewal,
     handleLogout,
+    modelUsage,
   };
 };

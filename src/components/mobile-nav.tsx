@@ -7,7 +7,11 @@ import { createPortal } from "react-dom";
 import { navLinks } from "./header";
 import { useNavigate, useLocation } from "react-router-dom";
 
-export function MobileNav() {
+interface MobileNavProps {
+  isLoggedIn: boolean;
+}
+
+export function MobileNav({ isLoggedIn }: MobileNavProps) {
   const [open, setOpen] = React.useState(false);
   const { isMobile } = useMediaQuery();
   const navigate = useNavigate();
@@ -110,19 +114,30 @@ export function MobileNav() {
                 ))}
               </div>
               <div className="mt-12 flex flex-col gap-2">
-                <Button
-                  className="w-full"
-                  variant="outline"
-                  onClick={() => handleButtonNavClick("/Login")}
-                >
-                  Sign In
-                </Button>
-                <Button
-                  className="w-full"
-                  onClick={() => handleButtonNavClick("/register")}
-                >
-                  Get Started
-                </Button>
+                {isLoggedIn ? (
+                  <Button
+                    className="w-full"
+                    onClick={() => handleButtonNavClick("/dashboard")}
+                  >
+                    Dashboard
+                  </Button>
+                ) : (
+                  <>
+                    <Button
+                      className="w-full"
+                      variant="outline"
+                      onClick={() => handleButtonNavClick("/Login")}
+                    >
+                      Sign In
+                    </Button>
+                    <Button
+                      className="w-full"
+                      onClick={() => handleButtonNavClick("/register")}
+                    >
+                      Get Started
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </div>,
