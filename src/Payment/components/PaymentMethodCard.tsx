@@ -1,5 +1,5 @@
 import React from "react";
-import { PaymentMethod, PaymentMethodType } from "../types";
+import { PaymentMethod } from "../types";
 import { CardForm } from "./CardForm";
 import { WalletForm } from "./WalletForm";
 import { UPIForm } from "./UPIForm";

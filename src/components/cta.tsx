@@ -1,7 +1,6 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
-import Pricing from "@/Pricing/Pricing";
 
 export function CallToAction() {
   const navigate = useNavigate();
