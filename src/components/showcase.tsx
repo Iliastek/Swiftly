@@ -49,8 +49,7 @@ export function Showcase() {
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {/* Hero Box - Large, Left (spans 2 rows) */}
-          <div className="md:col-span-2 md:row-span-2 relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="md:col-span-2 md:row-span-2 relative">
             <div className="relative h-full rounded-2xl border border-border bg-background p-6 shadow-lg">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 rounded-full bg-pink-500/10 border border-pink-500/20 px-3 py-1 text-xs font-medium text-pink-600 mb-4">
@@ -104,8 +103,7 @@ export function Showcase() {
           </div>
 
           {/* Performance Box - Small, Right Top */}
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="relative">
             <div className="relative h-full rounded-2xl border border-border bg-background p-6 shadow-lg flex flex-col">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-600 mb-4 w-fit">
@@ -139,8 +137,7 @@ export function Showcase() {
           </div>
 
           {/* Control Box - Small, Right Bottom */}
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="relative">
             <div className="relative h-full rounded-2xl border border-border bg-background p-6 shadow-lg">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 border border-blue-500/20 px-3 py-1 text-xs font-medium text-blue-600 mb-4">

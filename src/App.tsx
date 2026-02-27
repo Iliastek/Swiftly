@@ -4,10 +4,11 @@ import { CallToAction } from "./components/cta";
 import { Footer } from "./components/footer";
 import { LogoCloud } from "./components/logo-cloud";
 import { Hero } from "./components/hero";
-import { Features } from "./components/features";
+import { FeatureSection } from "./components/feature-section";
 import { ProblemSolution } from "./components/problem-solution";
 import { Showcase } from "./components/showcase";
 import { Testimonials } from "./components/testimonials";
+import { Integrations } from "./components/integrations";
 import { GlobalReach } from "./components/globalreach";
 
 function App() {
@@ -27,12 +28,15 @@ function App() {
           <div className="mask-[linear-gradient(to_right,transparent,black,transparent)] mt-5 h-px bg-border" />
         </section>
         <ProblemSolution />
-        <Features />
+        <FeatureSection />
+
         <Showcase />
         <GlobalReach />
+        <Integrations />
         <Testimonials />
+        <CallToAction />
       </main>
-      <CallToAction />
+
       <Footer />
     </div>
   );

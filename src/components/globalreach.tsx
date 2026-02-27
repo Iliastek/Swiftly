@@ -103,21 +103,6 @@ export function GlobalReach() {
                   className="animate-pulse"
                   style={{ animationDelay: `${i * 0.5}s` }}
                 />
-                {/* Animated dot traveling along line */}
-                <circle r="3" fill="hsl(var(--primary))">
-                  <animateMotion
-                    dur="3s"
-                    repeatCount="indefinite"
-                    begin={`${i * 0.5}s`}
-                  >
-                    <mpath xlinkHref={`#path${i}`} />
-                  </animateMotion>
-                </circle>
-                <path
-                  id={`path${i}`}
-                  d={`M400,250 L${point.x},${point.y}`}
-                  fill="none"
-                />
               </g>
             ))}
             <defs>
