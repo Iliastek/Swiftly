@@ -8,7 +8,6 @@ import { FeatureSection } from "./components/feature-section";
 import { ProblemSolution } from "./components/problem-solution";
 import { Showcase } from "./components/showcase";
 import { Testimonials } from "./components/testimonials";
-import { Integrations } from "./components/integrations";
 import { GlobalReach } from "./components/globalreach";
 
 function App() {
