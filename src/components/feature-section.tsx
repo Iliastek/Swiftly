@@ -153,8 +153,8 @@ function ReportsVisual() {
 
 function DashboardVisual() {
   return (
-    <div className="grid h-full sm:grid-cols-2">
-      <div className="relative z-10 space-y-6 py-8 ps-8 pe-2">
+    <div className="flex flex-col sm:grid h-full sm:grid-cols-2">
+      <div className="relative z-10 space-y-6 py-8 px-8 sm:ps-8 sm:pe-2">
         <div className="flex size-12 items-center justify-center rounded-full border bg-card shadow-xs outline outline-border/80 outline-offset-2">
           <SquareMousePointerIcon className="size-5 text-primary/80" />
         </div>
@@ -169,9 +169,9 @@ function DashboardVisual() {
         </div>
       </div>
       {/* Dashboard Screen */}
-      <div className="mask-b-from-90% mask-r-from-90% relative aspect-video sm:aspect-auto">
-        <div className="absolute -right-1 -bottom-1 aspect-video max-h-50 rounded-tl-md border bg-card p-1 sm:max-h-42 md:aspect-square md:max-h-50 lg:aspect-16/12">
-          <div className="aspect-video h-full overflow-hidden rounded-tl-sm border *:pointer-events-none *:size-full *:shrink-0 *:select-none">
+      <div className="relative w-full px-8 pb-8 sm:px-0 sm:pb-0 sm:mask-b-from-90% sm:mask-r-from-90% sm:aspect-auto">
+        <div className="relative sm:absolute sm:-right-1 sm:-bottom-1 w-full sm:w-auto aspect-video sm:max-h-42 rounded-md sm:rounded-tl-md border bg-card p-1 md:aspect-square md:max-h-50 lg:aspect-16/12">
+          <div className="aspect-video h-full overflow-hidden rounded-sm sm:rounded-tl-sm border *:pointer-events-none *:size-full *:shrink-0 *:select-none *:object-cover">
             <img
               alt="Dashboard preview"
               className="dark:hidden"
