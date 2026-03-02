@@ -170,8 +170,8 @@ function DashboardVisual() {
       </div>
       {/* Dashboard Screen */}
       <div className="relative w-full px-8 pb-8 sm:px-0 sm:pb-0 sm:mask-b-from-90% sm:mask-r-from-90% sm:aspect-auto">
-        <div className="relative sm:absolute sm:-right-1 sm:-bottom-1 w-full sm:w-auto aspect-video sm:max-h-42 rounded-md sm:rounded-tl-md border bg-card p-1 md:aspect-square md:max-h-50 lg:aspect-16/12 overflow-hidden">
-          <div className="w-full h-full overflow-hidden rounded-sm sm:rounded-tl-sm border">
+        <div className="relative sm:absolute sm:-right-1 sm:-bottom-1 w-full sm:w-auto aspect-video sm:max-h-42 rounded-md sm:rounded-tl-md border bg-card p-1 md:aspect-square md:max-h-50 lg:aspect-16/12 overflow-hidden flex">
+          <div className="flex-1 min-h-0 overflow-hidden rounded-sm sm:rounded-tl-sm border">
             <img
               alt="Dashboard preview"
               className="w-full h-full object-cover object-left-top pointer-events-none select-none dark:hidden"
