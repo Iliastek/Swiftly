@@ -171,17 +171,17 @@ function DashboardVisual() {
       {/* Dashboard Screen */}
       <div className="relative w-full px-8 pb-8 sm:px-0 sm:pb-0 sm:mask-b-from-90% sm:mask-r-from-90% sm:aspect-auto">
         <div className="relative sm:absolute sm:-right-1 sm:-bottom-1 w-full sm:w-auto aspect-video sm:max-h-42 rounded-md sm:rounded-tl-md border bg-card p-1 md:aspect-square md:max-h-50 lg:aspect-16/12">
-          <div className="aspect-video h-full overflow-hidden rounded-sm sm:rounded-tl-sm border *:pointer-events-none *:size-full *:shrink-0 *:select-none *:object-cover">
+          <div className="aspect-video h-full overflow-hidden rounded-sm sm:rounded-tl-sm border">
             <img
               alt="Dashboard preview"
-              className="dark:hidden"
+              className="w-full h-full object-contain pointer-events-none select-none dark:hidden"
               height={360}
               src="https://storage.efferd.com/screen/dashboard-light.webp"
               width={640}
             />
             <img
               alt="Dashboard preview"
-              className="hidden dark:block"
+              className="w-full h-full object-contain pointer-events-none select-none hidden dark:block"
               height={360}
               src="https://storage.efferd.com/screen/dashboard-dark.webp"
               width={640}
