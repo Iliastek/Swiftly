@@ -29,10 +29,8 @@ function App() {
         </section>
         <ProblemSolution />
         <FeatureSection />
-
         <Showcase />
         <GlobalReach />
-        <Integrations />
         <Testimonials />
         <CallToAction />
       </main>
