@@ -1,7 +1,13 @@
 import { Button } from "./ui/button";
 import { ArrowRightIcon, RocketIcon } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ContactOverlay } from "./contact-overlay";
 
 export function Hero() {
+  const [showContact, setShowContact] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <section className="relative overflow-hidden">
       {/* Grid Background */}
@@ -27,7 +33,10 @@ export function Hero() {
       <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
-          <button className="inline-flex items-center gap-2 rounded-full border bg-background/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium shadow-sm transition-colors hover:bg-accent mb-8">
+          <button
+            onClick={() => navigate("/changelog")}
+            className="inline-flex items-center gap-2 rounded-full border bg-background/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium shadow-sm transition-colors hover:bg-accent mb-8"
+          >
             <RocketIcon className="h-4 w-4" />
             <span>Discover what's new</span>
             <ArrowRightIcon className="h-3 w-3" />
@@ -48,7 +57,12 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Button variant="outline" size="lg" className="gap-2">
+            <Button
+              variant="outline"
+              size="lg"
+              className="gap-2"
+              onClick={() => setShowContact(true)}
+            >
               <svg
                 className="h-4 w-4"
                 viewBox="0 0 24 24"
@@ -67,6 +81,8 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {showContact && <ContactOverlay onClose={() => setShowContact(false)} />}
     </section>
   );
 }

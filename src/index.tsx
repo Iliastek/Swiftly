@@ -10,6 +10,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Payment from "./Payment/Payment";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "./TermsOfService/TermsOfService";
+import Changelog from "./Changelog/Changelog";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -28,6 +29,7 @@ root.render(
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/changelog" element={<Changelog />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
