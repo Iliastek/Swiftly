@@ -1,11 +1,6 @@
 "use client";
 import { Logo } from "../components/logo";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  LinkedinIcon,
-  YoutubeIcon,
-} from "lucide-react";
+import { InstagramIcon, LinkedinIcon, YoutubeIcon } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import type React from "react";
 import type { ComponentProps, ReactNode } from "react";
