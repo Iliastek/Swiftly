@@ -9,6 +9,7 @@ import {
 import { motion, useReducedMotion } from "motion/react";
 import type React from "react";
 import type { ComponentProps, ReactNode } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 type FooterLink = {
   title: string;
@@ -25,34 +26,22 @@ const footerLinks: FooterSection[] = [
   {
     label: "Product",
     links: [
-      { title: "Features", href: "#" },
-      { title: "Pricing", href: "#" },
-      { title: "Testimonials", href: "#" },
-      { title: "Integration", href: "#" },
+      { title: "Features", href: "/#features" },
+      { title: "Pricing", href: "/pricing" },
+      { title: "Testimonials", href: "/#testimonials" },
     ],
   },
   {
     label: "Company",
     links: [
-      { title: "FAQs", href: "#" },
-      { title: "About Us", href: "#" },
-      { title: "Privacy Policy", href: "#" },
-      { title: "Terms of Services", href: "#" },
-    ],
-  },
-  {
-    label: "Resources",
-    links: [
-      { title: "Blog", href: "#" },
-      { title: "Changelog", href: "#" },
-      { title: "Brand", href: "#" },
-      { title: "Help", href: "#" },
+      { title: "About Us", href: "/about" },
+      { title: "Privacy Policy", href: "/privacy-policy" },
+      { title: "Terms of Services", href: "/terms-of-service" },
     ],
   },
   {
     label: "Social Links",
     links: [
-      { title: "Facebook", href: "#", icon: FacebookIcon },
       { title: "Instagram", href: "#", icon: InstagramIcon },
       { title: "Youtube", href: "#", icon: YoutubeIcon },
       { title: "LinkedIn", href: "#", icon: LinkedinIcon },
@@ -61,6 +50,28 @@ const footerLinks: FooterSection[] = [
 ];
 
 export function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <footer className="relative mx-auto flex w-full max-w-[1400px] flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-6 md:rounded-t-6xl md:px-8">
       <div className="-translate-x-1/2 -translate-y-1/2 absolute top-0 right-1/2 left-1/2 h-px w-1/3 rounded-full bg-foreground/20 blur" />
@@ -82,8 +93,9 @@ export function Footer() {
                   {section.links.map((link) => (
                     <li key={link.title}>
                       <a
-                        className="inline-flex items-center transition-all duration-300 hover:text-foreground"
+                        className="inline-flex items-center transition-all duration-300 hover:text-foreground cursor-pointer"
                         href={link.href}
+                        onClick={(e) => handleNavClick(e, link.href)}
                         key={`${section.label}-${link.title}`}
                       >
                         {link.icon && <link.icon className="me-1 size-4" />}

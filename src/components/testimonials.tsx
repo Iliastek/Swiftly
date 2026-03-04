@@ -41,7 +41,10 @@ function StarRating() {
 
 export function Testimonials() {
   return (
-    <section className="py-20 px-4 bg-muted/30 relative">
+    <section
+      id="testimonials"
+      className="py-20 px-4 bg-muted/30 relative scroll-mt-20"
+    >
       {/* Subtle dot pattern background */}
       <div
         className="absolute inset-0 opacity-50"

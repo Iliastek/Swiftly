@@ -8,6 +8,8 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Dashboard from "./Dashboard/Dashboard";
 import Payment from "./Payment/Payment";
+import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
+import TermsOfService from "./TermsOfService/TermsOfService";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -24,6 +26,8 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
