@@ -73,7 +73,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
       )}
     >
-      <div className="bg-card border border-border rounded-xl p-8 shadow-lg">
+      <div className="bg-card border border-border rounded-xl p-4 sm:p-8 shadow-lg">
         {/* Mobile Plan Badge */}
         {selectedPlan && (
           <PlanBadgeMobile
@@ -84,11 +84,11 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         )}
 
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-foreground mb-2">
+        <div className="mb-4 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
             {selectedPlan ? "Complete your registration" : "Create an account"}
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {selectedPlan
               ? `You're signing up for ${selectedPlan.name}`
               : "Enter your information to get started"}
@@ -99,12 +99,12 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         <OAuthButtons />
 
         {/* Divider */}
-        <div className="relative mb-6">
+        <div className="relative mb-4 sm:mb-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-border"></div>
           </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="bg-card px-4 text-muted-foreground">
+          <div className="relative flex justify-center text-xs sm:text-sm">
+            <span className="bg-card px-3 sm:px-4 text-muted-foreground">
               Or continue with email
             </span>
           </div>
@@ -112,11 +112,11 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
 
         {/* Form */}
         {error && (
-          <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 text-sm">
+          <div className="mb-3 sm:mb-4 p-2.5 sm:p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 text-xs sm:text-sm">
             {error}
           </div>
         )}
-        <form onSubmit={onSubmit} className="space-y-5">
+        <form onSubmit={onSubmit} className="space-y-3 sm:space-y-5">
           <FormInput
             label="Full name"
             type="text"

@@ -43,21 +43,23 @@ export const LoginCard: React.FC<LoginCardProps> = ({
   return (
     <div className="w-full max-w-xl">
       {/* Logo above card */}
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-4 sm:mb-8">
         <Link to="/" className="hover:opacity-80 transition-opacity">
-          <Logo className="h-8" />
+          <Logo className="h-6 sm:h-8" />
         </Link>
       </div>
 
       <div
         className={cn(
-          "bg-card border border-border rounded-xl p-8 shadow-lg transition-all duration-500",
+          "bg-card border border-border rounded-xl p-4 sm:p-8 shadow-lg transition-all duration-500",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
         )}
       >
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-foreground mb-2">Sign in</h1>
+        <div className="mb-4 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
+            Sign in
+          </h1>
           <p className="text-muted-foreground">
             {selectedPlan
               ? "Sign in to continue with your selected plan"

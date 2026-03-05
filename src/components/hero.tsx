@@ -74,7 +74,11 @@ export function Hero() {
               </svg>
               Book a Call
             </Button>
-            <Button size="lg" className="gap-2">
+            <Button
+              size="lg"
+              className="gap-2"
+              onClick={() => navigate("/register")}
+            >
               Get started
               <ArrowRightIcon className="h-4 w-4" />
             </Button>

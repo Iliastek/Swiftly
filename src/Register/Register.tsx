@@ -26,12 +26,12 @@ const Register: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <div className="flex-1 flex items-center justify-center p-4 py-8">
+      <div className="flex-1 flex items-center justify-center p-4 sm:py-8 py-2">
         <div className="w-full max-w-6xl">
           {/* Logo centered above everything */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-4 sm:mb-8">
             <Link to="/" className="hover:opacity-80 transition-opacity">
-              <Logo className="h-8" />
+              <Logo className="h-6 sm:h-8" />
             </Link>
           </div>
 
