@@ -30,7 +30,7 @@ export function Hero() {
       {/* Fade overlay at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent -z-5" />
 
-      <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 py-24 md:py-32">
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
           <button
@@ -56,11 +56,11 @@ export function Hero() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4">
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4">
             <Button
               variant="outline"
               size="lg"
-              className="gap-2"
+              className="gap-2 w-full sm:w-auto"
               onClick={() => setShowContact(true)}
             >
               <svg
@@ -76,7 +76,7 @@ export function Hero() {
             </Button>
             <Button
               size="lg"
-              className="gap-2"
+              className="gap-2 w-full sm:w-auto"
               onClick={() => navigate("/register")}
             >
               Get started

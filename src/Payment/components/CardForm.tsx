@@ -32,7 +32,7 @@ export const CardForm: React.FC<CardFormProps> = ({
           value={cardNumber}
           onChange={(e) => setCardNumber(e.target.value)}
           placeholder="1234 5678 9012 3456"
-          className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="w-full px-4 py-2 rounded-lg border border-border bg-background text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-400"
           maxLength={19}
         />
       </div>
@@ -46,7 +46,7 @@ export const CardForm: React.FC<CardFormProps> = ({
             value={expiryDate}
             onChange={(e) => setExpiryDate(e.target.value)}
             placeholder="MM/YY"
-            className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="w-full px-4 py-2 rounded-lg border border-border bg-background text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-400"
             maxLength={5}
           />
         </div>
@@ -59,7 +59,7 @@ export const CardForm: React.FC<CardFormProps> = ({
             value={cvv}
             onChange={(e) => setCvv(e.target.value)}
             placeholder="123"
-            className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="w-full px-4 py-2 rounded-lg border border-border bg-background text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-400"
             maxLength={3}
           />
         </div>
@@ -73,7 +73,7 @@ export const CardForm: React.FC<CardFormProps> = ({
           value={cardholderName}
           onChange={(e) => setCardholderName(e.target.value)}
           placeholder="John Doe"
-          className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="w-full px-4 py-2 rounded-lg border border-border bg-background text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-400"
         />
       </div>
     </div>

@@ -11,6 +11,7 @@ export function ContactOverlay({ onClose }: ContactOverlayProps) {
     name: "",
     email: "",
     phone: "",
+    preferredDate: "",
     message: "",
   });
 
@@ -41,12 +42,11 @@ export function ContactOverlay({ onClose }: ContactOverlayProps) {
           {/* Left side - Info */}
           <div className="bg-muted/40 p-4 sm:p-6 md:p-10 flex flex-col justify-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-              Get in touch
+              Book a Call
             </h2>
             <p className="mt-3 sm:mt-4 text-muted-foreground text-xs sm:text-sm leading-relaxed">
-              If you have any questions regarding our Services or need help,
-              please fill out the form here. We do our best to respond within 1
-              business day.
+              Schedule a consultation with our team. Choose your preferred date
+              and time, and we'll get back to you to confirm the appointment.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export function ContactOverlay({ onClose }: ContactOverlayProps) {
                 e.preventDefault();
                 onClose();
               }}
-              className="space-y-3 sm:space-y-4 md:space-y-5"
+              className="space-y-2.5 sm:space-y-3 md:space-y-4"
             >
               <div>
                 <label className="block text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">
@@ -67,7 +67,7 @@ export function ContactOverlay({ onClose }: ContactOverlayProps) {
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full h-9 sm:h-10 rounded-lg border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-sm outline-none focus:border-muted-foreground transition-colors"
+                  className="w-full h-9 sm:h-10 rounded-lg border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-base outline-none focus:border-muted-foreground transition-colors"
                   placeholder="Your name"
                 />
               </div>
@@ -79,7 +79,7 @@ export function ContactOverlay({ onClose }: ContactOverlayProps) {
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full h-9 sm:h-10 rounded-lg border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-sm outline-none focus:border-muted-foreground transition-colors"
+                  className="w-full h-9 sm:h-10 rounded-lg border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-base outline-none focus:border-muted-foreground transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
@@ -91,29 +91,41 @@ export function ContactOverlay({ onClose }: ContactOverlayProps) {
                   type="tel"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="w-full h-9 sm:h-10 rounded-lg border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-sm outline-none focus:border-muted-foreground transition-colors"
+                  className="w-full h-9 sm:h-10 rounded-lg border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-base outline-none focus:border-muted-foreground transition-colors"
                   placeholder="+49 123 456789"
                 />
               </div>
               <div>
                 <label className="block text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">
-                  Message
+                  Preferred Date & Time
+                </label>
+                <input
+                  type="datetime-local"
+                  value={form.preferredDate}
+                  onChange={(e) =>
+                    setForm({ ...form, preferredDate: e.target.value })
+                  }
+                  className="w-full h-9 sm:h-10 rounded-lg border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-base outline-none focus:border-muted-foreground transition-colors"
+                  min={new Date().toISOString().slice(0, 16)}
+                />
+              </div>
+              <div>
+                <label className="block text-xs sm:text-sm font-medium mb-1 sm:mb-1.5 text-muted-foreground">
+                  Message{" "}
+                  <span className="text-[10px] sm:text-xs">(optional)</span>
                 </label>
                 <textarea
                   value={form.message}
-                  onChange={(e) => {
-                    setForm({ ...form, message: e.target.value });
-                    e.target.style.height = "auto";
-                    e.target.style.height = `${Math.min(e.target.scrollHeight, window.innerHeight * 0.3)}px`;
-                  }}
+                  onChange={(e) =>
+                    setForm({ ...form, message: e.target.value })
+                  }
                   rows={2}
-                  className="w-full rounded-lg border bg-background px-3 sm:px-4 py-2 sm:py-2.5 text-sm outline-none focus:border-muted-foreground transition-colors resize-none overflow-y-auto"
-                  style={{ maxHeight: "30vh" }}
-                  placeholder="How can we help you?"
+                  className="w-full rounded-lg border bg-background px-3 sm:px-4 py-2 text-base outline-none focus:border-muted-foreground transition-colors resize-none"
+                  placeholder="What would you like to discuss?"
                 />
               </div>
               <Button type="submit" className="w-full h-9 sm:h-10 md:h-11">
-                Submit
+                Book Call
               </Button>
             </form>
           </div>

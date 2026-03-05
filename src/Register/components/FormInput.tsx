@@ -44,7 +44,7 @@ export const FormInput: React.FC<FormInputProps> = ({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           required={required}
-          className={`w-full h-9 sm:h-11 pl-9 sm:pl-10 ${showPasswordToggle ? "pr-10 sm:pr-12" : "pr-3 sm:pr-4"} rounded-lg border border-border bg-secondary/50 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors`}
+          className={`w-full h-9 sm:h-11 pl-9 sm:pl-10 ${showPasswordToggle ? "pr-10 sm:pr-12" : "pr-3 sm:pr-4"} rounded-lg border border-border bg-secondary/50 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors`}
         />
         {showPasswordToggle && onTogglePassword && (
           <button

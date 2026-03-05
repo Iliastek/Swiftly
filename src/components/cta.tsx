@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
+import { useState } from "react";
+import { ContactOverlay } from "./contact-overlay";
 
 export function CallToAction() {
+  const [showContact, setShowContact] = useState(false);
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/pricing");
+    navigate("/register");
   };
   return (
     <div className="relative mx-auto flex w-full max-w-[1400px] flex-col justify-between border-x">
@@ -20,12 +23,16 @@ export function CallToAction() {
         </p>
       </div>
       <div className="flex items-center justify-center gap-2 bg-secondary/80 p-4 dark:bg-secondary/40">
-        <Button variant="outline">Contact Sales</Button>
+        <Button variant="outline" onClick={() => setShowContact(true)}>
+          Contact Sales
+        </Button>
         <Button onClick={handleButtonClick}>
           Get Started <ArrowRightIcon />
         </Button>
       </div>
       <div className="-translate-x-1/2 -bottom-px pointer-events-none absolute left-1/2 w-screen border-b" />
+
+      {showContact && <ContactOverlay onClose={() => setShowContact(false)} />}
     </div>
   );
 }
