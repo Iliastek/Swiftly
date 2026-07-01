@@ -5,7 +5,7 @@ import { Footer } from "./components/footer";
 import { LogoCloud } from "./components/logo-cloud";
 import { Hero } from "./components/hero";
 import { FeatureSection } from "./components/feature-section";
-import { ProblemSolution } from "./components/problem-solution";
+import { ProblemSolution } from "./components/ProblemSolution";
 import { Showcase } from "./components/showcase";
 import { Testimonials } from "./components/testimonials";
 import { GlobalReach } from "./components/globalreach";

@@ -9,9 +9,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 interface MobileNavProps {
   isLoggedIn: boolean;
+  onRegister: () => void;
 }
 
-export function MobileNav({ isLoggedIn }: MobileNavProps) {
+export function MobileNav({ isLoggedIn, onRegister }: MobileNavProps) {
   const [open, setOpen] = React.useState(false);
   const { isMobile } = useMediaQuery();
   const navigate = useNavigate();
@@ -132,7 +133,10 @@ export function MobileNav({ isLoggedIn }: MobileNavProps) {
                     </Button>
                     <Button
                       className="w-full"
-                      onClick={() => handleButtonNavClick("/register")}
+                      onClick={() => {
+                        setOpen(false);
+                        onRegister();
+                      }}
                     >
                       Get Started
                     </Button>

@@ -135,13 +135,14 @@ export function Header() {
               >
                 Sign In
               </Button>
-              <Button onClick={() => handleButtonNavClick("/register")}>
-                Get Started
-              </Button>
+              <Button onClick={() => navigate("/register")}>Get Started</Button>
             </>
           )}
         </div>
-        <MobileNav isLoggedIn={isLoggedIn} />
+        <MobileNav
+          isLoggedIn={isLoggedIn}
+          onRegister={() => navigate("/register")}
+        />
       </nav>
     </header>
   );
